@@ -3,11 +3,10 @@ import pyautogui
 import time
 
 sessions = AudioUtilities.GetAllSessions()
-volume_val = 1
 MIN_VOL = 0.1
 MAX_VOL = 1
 webexApps = ['atmgr.exe', 'ptoneclk.exe']
-brave = ['brave.exe']
+braveApps = ['brave.exe']
 
 def setAudioFocus(appName):
     allApps = getProcessNames(sessions)
@@ -48,14 +47,17 @@ print(getProcessNames(sessions))
 
 if __name__ == "__main__":
     while True:
-        pos = pyautogui.position()
-        print(pos.x)
-        
-        if(pos.x > 0):
-            # focus brave audio
-            setAudioFocus('brave.exe')
-        else:
-            # focus webex audio
-            setAudioFocus('atmgr.exe')
-        
-        time.sleep(0.5)
+        try:
+            pos = pyautogui.position()
+            print(pos.x)
+            
+            if(pos.x > 0):
+                # focus brave audio
+                setAudioFocus('brave.exe')
+            else:
+                # focus webex audio
+                setAudioFocus('atmgr.exe')
+            
+            time.sleep(0.5)
+        except Exception as e:
+            print(e)
