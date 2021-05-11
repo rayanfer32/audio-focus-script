@@ -1,3 +1,10 @@
+.gitignore
+
+# venv
 Include/
 Lib/
 Scripts/
+
+# local files
+pyvenv.cfg
+run.bat
